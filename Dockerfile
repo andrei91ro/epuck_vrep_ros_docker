@@ -13,3 +13,8 @@ RUN git clone https://github.com/gctronic/epuck_driver_cpp
 WORKDIR /root/catkin_ws
 #RUN bash /ros_entrypoint.sh && catkin_make && source devel/setup.bash
 RUN /bin/bash -c '. /opt/ros/indigo/setup.bash; catkin_make; source devel/setup.bash'
+
+WORKDIR /root
+RUN git clone https://github.com/andrei91ro/epuck_vrep_ros
+
+RUN echo "source /root/catkin_ws/devel/setup.bash" >> /root/.bashrc
