@@ -17,4 +17,11 @@ RUN /bin/bash -c '. /opt/ros/indigo/setup.bash; catkin_make; source devel/setup.
 WORKDIR /root
 RUN git clone https://github.com/andrei91ro/epuck_vrep_ros
 
-RUN echo "source /root/catkin_ws/devel/setup.bash" >> /root/.bashrc
+WORKDIR /root/rvr_ws/src
+RUN /bin/bash -c '. /opt/ros/indigo/setup.bash; catkin_init_workspace; cd ..; source ~/catkin_ws/devel/setup.bash; catkin_make'
+
+#RUN echo "source /root/catkin_ws/devel/setup.bash" >> /root/.bashrc && \
+    #echo "source /root/rvr_ws/devel/setup.bash" >> /root/.bashrc && \
+    #echo "umask 000" >> /root/.bashrc
+RUN echo "source /root/rvr_ws/devel/setup.bash" >> /root/.bashrc && \
+    echo "umask 000" >> /root/.bashrc
